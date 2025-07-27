@@ -1,0 +1,78 @@
+﻿Spec – Online Cake Shop
+
+# Online Cake Shop System Specification
+
+## Overview
+The system is a web-based platform that allows customers to browse a catalog of cakes, customize their orders, place orders, make payments, and track deliveries. It includes administrative features for shop owners to manage inventory, orders, and customer interactions.
+
+## Functionalities
+
+### 1. User Account Management
+- **Registration and Login**: Customers can create accounts using email or social media (e.g., Google, Facebook) and log in securely. Guest checkout is available for non-registered users.
+- **Profile Management**: Users can update personal details (name, contact, delivery addresses) and view order history.
+- **Password Recovery**: Email-based password reset functionality.
+
+### 2. Cake Catalog Browsing
+- **Product Listings**: Display cakes with images, descriptions, prices, and customer reviews. Categories include birthdays, weddings, special occasions, etc.
+- **Search and Filters**: Search by keywords (e.g., "chocolate cake") and filter by type (e.g., vegan, gluten-free), size, price, or occasion.
+- **Product Details**: Each cake listing includes ingredients, allergens, and estimated preparation time.
+
+### 3. Cake Customization
+- **Customization Interface**: Interactive tool for designing cakes, allowing users to:
+  - **Select Base Cake**: Choose flavor (e.g., vanilla, chocolate, red velvet) and size (e.g., 6", 8", tiered).
+  - **Choose Frosting and Fillings**: Select frosting type (e.g., buttercream, fondant) and fillings (e.g., fruit, custard).
+  - **Add Decorations**: Pick toppings, edible images, or piped designs. Upload custom images for photo cakes.
+  - **Personalized Messages**: Add text (e.g., "Happy Birthday!") with font and color options.
+  - **Shape and Structure**: Choose shapes (e.g., round, square, heart) or multi-tiered designs for special occasions.
+- **Real-Time Preview**: Display a visual representation of the customized cake as options are selected.
+- **Pricing Updates**: Dynamically update the price based on customization choices (e.g., premium ingredients or complex designs add to the cost).
+
+### 4. Order Placement
+- **Cart Management**: Add customized cakes and standard items to the cart, with options to modify quantities or remove items.
+- **Delivery Options**: Select delivery date, time slot, and address. Offer same-day delivery if available.
+- **Order Summary**: Display itemized costs, including customization fees, delivery charges, and taxes.
+- **Special Instructions**: Text field for additional requests (e.g., "deliver quietly").
+
+### 5. Payment Processing
+- **Payment Gateway Integration**: Support multiple payment methods (e.g., credit/debit cards, PayPal, Apple Pay, Google Pay).
+- **Secure Transactions**: Use SSL encryption and comply with PCI-DSS standards.
+- **Order Confirmation**: Send email and SMS confirmations with order details and estimated delivery time.
+
+### 6. Order Tracking and Communication
+- **Real-Time Tracking**: Customers can track order status (e.g., "In Preparation," "Out for Delivery") via a dashboard or email/SMS updates.
+- **Customer Support**: Live chat, email, or phone support for inquiries or issues.
+- **Order Modifications**: Allow limited changes (e.g., delivery time) before preparation begins, subject to shop approval.
+
+### 7. Admin Panel (Shop Owner)
+- **Inventory Management**: Track ingredients and stock levels, with alerts for low inventory.
+- **Order Management**: View, update, and fulfill orders. Assign orders to bakers or delivery personnel.
+- **Customization Requests**: Review and approve complex customizations (e.g., uploaded images).
+- **Pricing Configuration**: Set base prices and additional costs for customizations (e.g., fondant vs. buttercream).
+- **Analytics Dashboard**: Monitor sales, popular items, and customer trends.
+- **Promotions and Discounts**: Create and manage discount codes or loyalty programs.
+
+### 8. Additional Features
+- **Reviews and Ratings**: Customers can leave feedback and star ratings for cakes and service.
+- **Loyalty Program**: Offer points or discounts for repeat customers.
+- **Gift Options**: Include gift wrapping or greeting cards with the order.
+- **Multi-Language Support**: Cater to diverse customers with language options.
+- **Responsive Design**: Ensure the platform is accessible on desktops, tablets, and mobile devices.
+
+9. Technical Requirements
+
+Frontend: Built using HTML, CSS, JavaScript, and frameworks like React for a dynamic customization interface for customer.
+Backend: Use Ubuntu 24.01 Django 4.2, Bootstrap 5.0 for handling requests, user data, and order processing for staff.
+Database: Store user profiles, orders, and inventory in a relational database PostgreSQL
+Integration:  Use JWT and Restful Framework for integration between React and Django.
+Security: Implement HTTPS, data encryption, and secure authentication JWT.
+APIs: Integrate third-party services for payments (e.g., Stripe), maps (e.g., Google Maps for delivery), and image processing.
+Hosting: Deploy on DigitalOcean
+
+### 10. User Experience Considerations
+- **Intuitive Interface**: Ensure the customization tool is easy to use with drag-and-drop or clickable options.
+- **Performance**: Optimize for fast loading, especially for image-heavy pages and real-time previews.
+- **Accessibility**: Comply with WCAG standards (e.g., alt text for images, keyboard navigation).
+- **Error Handling**: Provide clear error messages (e.g., "Selected delivery time unavailable") and guide users to resolve issues.
+
+## Conclusion
+This system streamlines the cake ordering process by offering a robust customization feature, seamless ordering, and efficient management for shop owners. It enhances customer satisfaction through personalization and convenience while optimizing operations for the business.
