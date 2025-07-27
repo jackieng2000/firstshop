@@ -1,0 +1,107 @@
+{% load static %}
+<style>
+    .navbar-brand .logo {
+        width: 1rem; /* Logo size: double the character size */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .navbar-nav .nav-link {
+        font-size: 0.6rem; /* Half the original font size */
+    }
+    .cart-info {
+        font-size: 0.6rem; /* Match cart info size with nav links */
+        /*  white-space: nowrap; */   /* Prevent line breaks */
+    }
+    .navbar-nav .nav-link .cart-info {
+        color: #333; /* Darker color for better contrast */
+}
+    .custom-bg {
+        background-color: #e0e0e0; /* Medium gray */
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light custom-bg  sticky-top">
+    <div class="container">
+
+        <!-- Show logo -->
+        <a class="navbar-brand" href="{% url 'shop:index' %}">
+            <img src="{% static 'img/logo.png' %}" class="logo" alt="Logo" />
+        </a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Expanded navbar -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item {% if '/' == request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'shop:index' %}">Home</a>
+                </li>
+<!-------------------------------------------------------------------
+                <li class="nav-item {% if 'about' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'shop:about' %}">About</a>
+                </li>
+                -->
+
+                <li class="nav-item {% if 'shop1' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'shop1:product_list' %}">Order Cake</a>
+                </li>
+                <li class="nav-item {% if 'shop2' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'shop2:product_list' %}">Baking Workshop</a>
+                </li>
+                <li class="nav-item {% if 'shop3' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'shop3:baking_studio' %}">Self-Service Baking Studio</a>
+                </li>
+                <li class="nav-item {% if 'shop4' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'shop4:product_list' %}">Store</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item {% if 'dashboard' in request.path %}active{% endif %}">
+                      <a class="nav-link" href="{% url 'accounts:dashboard' %}">
+                            <i class="fas fa-user-plus"></i> Welcome {{ user.username }} (Dashboard)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <form action="{% url 'accounts:logout' %}" method="POST" id="logout" style="display: none;">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item {% if 'register' in request.path %}active{% endif %}">
+                      <a class="nav-link" href="{% url 'accounts:register' %}">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'login' in request.path %}active{% endif %}">
+                      <a class="nav-link" href="{% url 'accounts:login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <!-- Subheader for cart information -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav w-100">
+            <div class="nav-item cart-info">
+                {% with total_items=cart|length %}
+                    {% if total_items > 0 %}
+                        Your cart: <a href="{% url 'cart:cart_detail' %}">
+                            {{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}
+                        </a>
+                    {% else %}
+                        Your cart is empty.
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</nav>
